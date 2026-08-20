@@ -26,7 +26,7 @@ func Upstream(g *graph.Graph, id string) (map[string]bool, error) {
 	}
 	dfs(id)
 	delete(res, id)
-	return res, nil
+	return fillUp(res), nil
 }
 
 // Downstream returns all transitive successors of node id (excluding id itself).
