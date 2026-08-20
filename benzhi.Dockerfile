@@ -1,0 +1,13 @@
+FROM golang:1.21-alpine
+
+ENV GOTOOLCHAIN=local
+ENV CGO_ENABLED=0
+
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
+
+RUN go build -o /usr/local/bin/etl-lineage .
+
+CMD ["go", "test", "./..."]
