@@ -73,7 +73,7 @@ func checkOrphans(g *graph.Graph, r *Result) {
 		preds := g.Predecessors(n)
 		succs := g.Successors(n)
 		if len(preds) == 0 && len(succs) == 0 && g.NodeCount() > 1 {
-			r.Issues = append(r.Issues, Issue{
+			commitOrphan(r, Issue{
 				Severity: "warning",
 				Code:     "orphan_node",
 				Message:  fmt.Sprintf("node %q has no edges (orphan)", n),
