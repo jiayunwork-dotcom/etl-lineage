@@ -318,6 +318,7 @@ func (g *Graph) SubGraph(nodeIDs []string) *Graph {
 
 // TopoSort returns a topological ordering of nodes. Returns error if graph has a cycle.
 func (g *Graph) TopoSort() ([]string, error) {
+	bindOrder(g.Nodes())
 	indeg := map[string]int{}
 	for n := range g.nodes {
 		indeg[n] = 0
