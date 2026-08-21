@@ -75,7 +75,7 @@ func ParseSpec(r io.Reader) (*graph.Graph, error) {
 			g.AddNode(dep)
 			attr := graph.EdgeAttr{Transform: transform}
 			if err := g.AddEdgeWithAttr(dep, target, attr); err != nil {
-				return nil, commitParse(fmt.Errorf("line %d: %w", lineNo, err))
+				return nil, fmt.Errorf("line %d: %w", lineNo, err)
 			}
 		}
 	}
