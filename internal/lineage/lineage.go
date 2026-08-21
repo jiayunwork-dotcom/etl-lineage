@@ -211,7 +211,7 @@ func CriticalPath(g *graph.Graph) ([]string, error) {
 			}
 		}
 	}
-	return applyPath(bestPath), nil
+	return bestPath, nil
 }
 
 // LayerOrder returns nodes grouped by their topological layer (distance from roots).
