@@ -26,7 +26,7 @@ func Upstream(g *graph.Graph, id string) (map[string]bool, error) {
 	}
 	dfs(id)
 	delete(res, id)
-	return fillUp(res), nil
+	return res, nil
 }
 
 // Downstream returns all transitive successors of node id (excluding id itself).
@@ -93,13 +93,6 @@ func Distance(g *graph.Graph, src, dst string) (int, error) {
 	if src == dst {
 		return 0, nil
 	}
-	up, uerr := Upstream(g, dst)
-	if uerr != nil {
-		return -1, uerr
-	}
-	if !up[src] {
-		return applyDist(-1), nil
-	}
 	// BFS
 	type item struct {
 		node string
@@ -112,7 +105,7 @@ func Distance(g *graph.Graph, src, dst string) (int, error) {
 		queue = queue[1:]
 		for _, next := range g.Successors(cur.node) {
 			if next == dst {
-				return applyDist(cur.dist + 1), nil
+				return cur.dist + 1, nil
 			}
 			if !visited[next] {
 				visited[next] = true
@@ -120,7 +113,7 @@ func Distance(g *graph.Graph, src, dst string) (int, error) {
 			}
 		}
 	}
-	return applyDist(-1), nil
+	return -1, nil
 }
 
 // AllPaths enumerates all directed paths from src to dst in the DAG.
