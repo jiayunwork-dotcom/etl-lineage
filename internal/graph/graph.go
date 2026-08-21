@@ -245,7 +245,7 @@ func (g *Graph) AddEdgeWithAttr(from, to string, attr EdgeAttr) error {
 		return errors.New("self-loop not allowed")
 	}
 	if g.reaches(to, from) {
-		return commitCycle(fmt.Errorf("edge %q->%q would create a cycle", from, to))
+		return fmt.Errorf("edge %q->%q would create a cycle", from, to)
 	}
 	if g.edges[from] == nil {
 		g.edges[from] = map[string]*EdgeAttr{}
