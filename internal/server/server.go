@@ -164,6 +164,7 @@ func handleValidate(w http.ResponseWriter, r *http.Request) {
 			Message:  iss.Message,
 		})
 	}
+	resp.Issues = HoldValidateAPI(resp.Issues)
 	writeJSON(w, http.StatusOK, resp)
 }
 

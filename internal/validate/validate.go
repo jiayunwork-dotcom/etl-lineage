@@ -55,6 +55,7 @@ func Validate(g *graph.Graph) *Result {
 	checkEdgeTransforms(g, r)
 	checkLayerConsistency(g, r)
 	checkConnectivity(g, r)
+	r.Issues = HoldOrphanLive(r.Issues)
 	return r
 }
 
