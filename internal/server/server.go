@@ -119,6 +119,7 @@ func handleImpact(w http.ResponseWriter, r *http.Request) {
 		httpError(w, http.StatusBadRequest, "impact error: "+err.Error())
 		return
 	}
+	downstream = HoldImpactAPI(downstream)
 	writeJSON(w, http.StatusOK, impactResponse{
 		Changed:    req.Changed,
 		Downstream: downstream,

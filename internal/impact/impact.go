@@ -6,5 +6,9 @@ import (
 )
 
 func Impact(g *graph.Graph, changed string) ([]string, error) {
-	return lineage.BatchImpact(g, []string{changed})
+	got, err := lineage.BatchImpact(g, []string{changed})
+	if err != nil {
+		return nil, err
+	}
+	return HoldImpactLive(got), nil
 }
