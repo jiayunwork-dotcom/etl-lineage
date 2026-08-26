@@ -68,6 +68,7 @@ func Compute(g *graph.Graph) *GraphMetrics {
 	m.LeafCount = len(g.Leaves())
 
 	m.Depth = computeDepth(g)
+	m.Depth = HoldDepthLive(m.Depth)
 
 	m.Width = computeWidth(g)
 
