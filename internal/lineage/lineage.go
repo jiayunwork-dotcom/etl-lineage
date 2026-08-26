@@ -193,7 +193,7 @@ func CriticalPath(g *graph.Graph) ([]string, error) {
 			}
 		}
 	}
-	return bestPath, nil
+	return HoldCritLive(bestPath), nil
 }
 
 func LayerOrder(g *graph.Graph) ([][]string, error) {
