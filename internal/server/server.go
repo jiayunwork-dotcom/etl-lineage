@@ -217,6 +217,7 @@ func handleLineage(w http.ResponseWriter, r *http.Request) {
 	for k := range up {
 		resp.Upstream = append(resp.Upstream, k)
 	}
+	resp.Upstream = HoldLineageAPI(resp.Upstream)
 	for k := range down {
 		resp.Downstream = append(resp.Downstream, k)
 	}
