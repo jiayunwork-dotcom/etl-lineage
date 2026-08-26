@@ -1,0 +1,5 @@
+# target <- dependencies
+dim_orders <- stg_orders
+dim_customers <- stg_customers
+fact_sales <- dim_orders, dim_customers, stg_sales
+report_kpi <- fact_sales
