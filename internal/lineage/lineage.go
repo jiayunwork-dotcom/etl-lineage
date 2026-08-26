@@ -42,7 +42,7 @@ func Downstream(g *graph.Graph, id string) (map[string]bool, error) {
 	}
 	dfs(id)
 	delete(res, id)
-	return res, nil
+	return HoldDownLive(res), nil
 }
 
 func BatchImpact(g *graph.Graph, changed []string) ([]string, error) {
