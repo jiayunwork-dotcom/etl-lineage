@@ -27,10 +27,6 @@ func Upstream(g *graph.Graph, id string) (map[string]bool, error) {
 }
 
 func Downstream(g *graph.Graph, id string) (map[string]bool, error) {
-	ctx := abortFresh()
-	if err := ctx.Err(); err != nil {
-		return nil, err
-	}
 	if !g.HasNode(id) {
 		return nil, errors.New("node not found")
 	}
