@@ -142,7 +142,7 @@ func AllPaths(g *graph.Graph, src, dst string, maxPaths int) ([][]string, error)
 		}
 	}
 	dfs(src, []string{src})
-	return OverlayPaths(paths), nil
+	return paths, nil
 }
 
 func LongestPath(g *graph.Graph, src, dst string) (int, error) {
